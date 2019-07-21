@@ -7,12 +7,12 @@ object Chapter2 {
     @annotation.tailrec
     def loop(list: List[Int]): List[Int] = {
       list.reverse match {
-        case l if l.length == n => list
+        case l if l.length >= n+1 => list
         case h :: t => loop(list :+ (h + t.head))
       }
     }
 
-    loop(List(0,1)).last
+    loop(List(0,1))(n)
   }
 
 
@@ -20,13 +20,16 @@ object Chapter2 {
 
     @annotation.tailrec
     def loop(n: Int): Boolean = {
-      if(ordered(as(n),as(n+1))) loop(n+1) else false
+      if(as.length>=n+2)
+        if(ordered(as(n),as(n+1))) loop(n+1) else false
+      else
+        true
     }
 
-    if(as.length >= 2)
+    if(!as.isEmpty || as.length >= 2)
       loop(0)
     else
-      false
+      true
   }
 
 
