@@ -26,7 +26,7 @@ object Chapter2 {
         true
     }
 
-    if(!as.isEmpty || as.length >= 2)
+    if(as.length >= 2)
       loop(0)
     else
       true
