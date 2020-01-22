@@ -7,7 +7,7 @@ class Chapter2Spec extends WordSpec with Matchers {
   "Chapter2.Fibonacci" should {
 
     "return 55" in {
-      Chapter2.fibonacci(10) shouldEqual 55
+      Chapter2.fibonacci(55) shouldEqual 2144908973
     }
 
     "return 0" in {
@@ -40,5 +40,21 @@ class Chapter2Spec extends WordSpec with Matchers {
     "return true when given array of length 1" in {
       Chapter2.isSorted[Int](Array(0), (a,b) => a < b) shouldEqual true
     }
+  }
+
+  "Chapter2.curry" should {
+
+    "work" in {
+
+      def f(a: Int, b: Int): Int = {
+        a + b
+      }
+
+      val res = Chapter2.curry(f)
+
+      res(1)(2) shouldEqual 3
+
+    }
+
   }
 }
